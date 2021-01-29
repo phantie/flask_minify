@@ -4,7 +4,7 @@ from os import path
 from importlib import import_module
 from flask import Flask
 
-from .constants import (HTML, JS, LESS, FALSE_LESS, JS_WITH_TYPE,
+from .constants import (HTML, JS, FALSE_LESS, JS_WITH_TYPE,
                         HTML_EMBEDDED_TAGS)
 
 
@@ -38,11 +38,6 @@ def js_with_type():
     return JS_WITH_TYPE
 
 
-@app.route('/cssless')
-def cssless():
-    return LESS
-
-
 @app.route('/js/<addition>')
 def js_addition(addition=None):
     return '''<script>
@@ -68,12 +63,6 @@ def html_decorated():
 @decorator(html=True, js=True)
 def js_decorated():
     return JS
-
-
-@app.route('/less_decorated')
-@decorator(html=True, cssless=True)
-def less_decorated():
-    return LESS
 
 
 @app.route('/html_embedded')

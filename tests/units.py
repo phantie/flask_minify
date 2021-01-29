@@ -35,7 +35,6 @@ class TestUtils:
         ''' Test is_cssless check is correct '''
         assert is_cssless(mock.Mock(content_type='text/javascript')) is False
         assert is_cssless(mock.Mock(content_type='text/css')) is True
-        assert is_cssless(mock.Mock(content_type='text/less')) is True
 
     def test_jsmin_template_literals(self):
         ''' Test `jsmin` template literals white spaces sanity '''

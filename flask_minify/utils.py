@@ -111,7 +111,7 @@ def is_js(response):
 
 
 def is_cssless(response):
-    ''' Check if Flask response of Css or Less content-type.
+    ''' Check if Flask response of Css content-type.
 
     Parameters
     ----------
@@ -123,7 +123,7 @@ def is_cssless(response):
     '''
     content_type = getattr(response, 'content_type', '')
 
-    return 'css' in content_type.lower() or 'less' in content_type.lower()
+    return 'css' in content_type.lower()
 
 
 def iter_tags_to_minify(cssless, js):
@@ -131,7 +131,7 @@ def iter_tags_to_minify(cssless, js):
     Parameters
     ----------
     cssless: bool
-        to enable css and less.
+        to enable css.
     js: bool
         to enable javascript.
     Returns

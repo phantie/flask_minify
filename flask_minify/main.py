@@ -1,14 +1,14 @@
+from .utils import get_tag_contents, is_html, is_cssless, is_js, iter_tags_to_minify
+from .minify_css import minify_css
+
 from sys import maxsize
 from six import StringIO
 from re import compile as compile_re
+
 from flask import request, _app_ctx_stack
 from xxhash import xxh64, xxh32
 from htmlmin import minify as minify_html
-from lesscpy import compile as compile_less
 from jsmin import jsmin
-
-from flask_minify.utils import (get_tag_contents, is_html, is_cssless, is_js,
-                                iter_tags_to_minify)
 
 
 # optimized hashing speed based on cpu architecture
@@ -16,14 +16,14 @@ hashing = xxh64 if maxsize > 2**32 else xxh32
 
 
 class Minify(object):
-    'Extension to minify flask response for html, javascript, css and less.'
+    'Extension to minify flask response for html, javascript, css.'
 
     def __init__(
         self, app=None, html=True, js=True, cssless=True,
         fail_safe=True, bypass=[], bypass_caching=[], caching_limit=2,
         passive=False, static=True, script_types=[]
     ):
-        ''' Extension to minify flask response for html, javascript, css and less.
+        ''' Extension to minify flask response for html, javascript, css.
 
         Parameters
         ----------
@@ -44,7 +44,7 @@ class Minify(object):
         passive: bool
             to disable active minifying.
         static: bool
-            to enable minifying static files css, less and js.
+            to enable minifying static files css and js.
         script_types: list
             list of script types to limit js minification to.
 
@@ -127,7 +127,7 @@ class Minify(object):
     def get_minified(cls, content, tag, fail_safe=False,
                      only_html_content=False, html_cssless=False,
                      html_js=False, script_types=[]):
-        ''' To minify css/less or javascript and failsafe that.
+        ''' To minify css or javascript and failsafe that.
 
         Parameters
         ----------
@@ -140,7 +140,7 @@ class Minify(object):
         only_html_content: bool
             to skip minifying the HTML tag and just minify its content.
         html_cssless: bool
-            to minify html inner css/less.
+            to minify html inner css.
         html_js: bool
             to minify html inner js.
         script_types: list
@@ -153,7 +153,7 @@ class Minify(object):
         '''
         try:
             if tag == 'style':
-                return compile_less(StringIO(content),
+                return minify_css(StringIO(content),
                                     minify=True,
                                     xminify=True)
             elif tag == 'script':

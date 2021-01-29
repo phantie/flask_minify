@@ -52,8 +52,8 @@ setup(
     platforms='any',
     install_requires=requirements,
     setup_requires=test_requirements,
-    keywords=['flask', 'extension', 'minifer', 'htmlmin', 'lesscpy',
-              'jsmin', 'html', 'js', 'less', 'css'],
+    keywords=['flask', 'extension', 'minifer', 'htmlmin',
+              'jsmin', 'html', 'js', 'css'],
     classifiers=[
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.5',

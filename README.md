@@ -13,16 +13,12 @@
 <img src='https://img.shields.io/badge/code%20style-pep8-orange.svg' alt='Code Style' />
 <img src='https://img.shields.io/pypi/dm/flask_minify' alt='Number of downloads' />
 </p>
-<h3 align='center'>A Flask extension to parse request's response and minify html, javascript, css and less.</h3>
+<h3 align='center'>A Flask extension to parse request's response and minify html, javascript, css.</h3>
 
 ## Install:
-#### - With pip
-> - `pip install Flask-Minify` <br />
 
-#### - From the source:
-> - `git clone https://github.com/mrf345/flask_minify.git`<br />
-> - `cd flask_minify` <br />
-> - `python setup.py install`
+    pip install git+https://github.com/phantie/flask_minify.git
+
 
 ## Setup:
 > With this setup the extension will minify every HTML request, unless it's explicitly bypassed.
@@ -57,7 +53,7 @@ def __init__(
         fail_safe=True, bypass=[], bypass_caching=[], caching_limit=2,
         passive=False, static=True, script_types=[]
     ):
-        ''' Extension to minify flask response for html, javascript, css and less.
+        ''' Extension to minify flask response for html, javascript, css.
 
         Parameters
         ----------
@@ -78,7 +74,7 @@ def __init__(
         passive: bool
             to disable active minifying.
         static: bool
-            to enable minifying static files css, less and js.
+            to enable minifying static files css and js.
         script_types: list
             list of script types to limit js minification to.
 

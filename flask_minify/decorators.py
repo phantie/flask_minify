@@ -13,7 +13,7 @@ def minify(html=False, js=False, cssless=False, cache=True, fail_safe=True):
         js: bool
             enable minifying JavaScript content.
         cssless: bool
-            enable minifying CSS/LESS content.
+            enable minifying CSS content.
         cache: bool
             enable caching minifed response.
         failsafe: bool
